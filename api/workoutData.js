@@ -1,7 +1,7 @@
 const endpoint = 'https://localhost:7185';
 
 const getAllUserWorkouts = (userId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/workout/${userId}`, {
+  fetch(`${endpoint}/workout/user/${userId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
