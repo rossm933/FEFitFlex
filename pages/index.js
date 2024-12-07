@@ -1,25 +1,38 @@
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
+import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
+import { getAllUserWorkouts } from '../api/workoutData';
+import WorkoutCard from '../components/cards/WorkoutCard';
 
 function Home() {
+  const [workouts, setWorkouts] = useState([]);
   const { user } = useAuth();
+
+  console.warn(user);
+  const getAllTheWorkouts = () => {
+    if (user.id) {
+      getAllUserWorkouts(user.id).then(setWorkouts);
+    } else {
+      console.error('User not logged in.');
+    }
+  };
+
+  useEffect(() => {
+    getAllTheWorkouts();
+  }, []);
+
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.fbUser.displayName}! </h1>
-      <p>Your Bio: {user.bio}</p>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
+    <div className="text-center my-4">
+      <Link href="/workout/new" passHref>
+        <Button style={{ background: '#B38B6D', border: 'solid 1px black' }}>Add A Workout</Button>
+      </Link>
+      <div className="d-flex flex-wrap justify-content-center align-items-center">
+        {workouts.map((workout) => (
+          <WorkoutCard key={workout.id} workoutObj={workout} onUpdate={getAllTheWorkouts} />
+        ))}
+      </div>
+
     </div>
   );
 }

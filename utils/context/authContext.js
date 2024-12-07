@@ -7,7 +7,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { checkUser } from '../auth';
+import { checkUser, singleUser } from '../auth';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -34,7 +34,7 @@ const AuthProvider = (props) => {
     firebase.auth().onAuthStateChanged((fbUser) => {
       if (fbUser) {
         setOAuthUser(fbUser);
-        checkUser(fbUser.uid).then((gamerInfo) => {
+        singleUser(fbUser.uid).then((gamerInfo) => {
           let userObj = {};
           if ('null' in gamerInfo) {
             userObj = gamerInfo;

@@ -25,6 +25,19 @@ const checkUser = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const singleUser = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/user/checkuser/${uid}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 const registerUser = (userInfo) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/user/register`, {
     method: 'POST',
@@ -52,4 +65,5 @@ export {
   signOut,
   checkUser,
   registerUser,
+  singleUser,
 };
