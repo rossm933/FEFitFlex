@@ -29,7 +29,7 @@ function Home() {
       </Link>
       <div className="d-flex flex-wrap justify-content-center align-items-center">
         {workouts.map((workout) => (
-          <WorkoutCard key={workout.id} workoutObj={workout} onUpdate={getAllTheWorkouts} />
+          <WorkoutCard key={workout.id} workout={workout} onUpdate={getAllTheWorkouts} />
         ))}
       </div>
 
