@@ -40,6 +40,10 @@ function ExerciseCard({ exerciseObj, onUpdate }) {
           </div>
         </p>
         <br />
+        <Link href={`/exercise/${exerciseObj.id}`} passHref>
+          <Button style={{ background: '#ADD8E6', border: 'solid 1px black' }} variant="primary" className="m-2">VIEW</Button>
+        </Link>
+
         {isOwner && (
         <Link href={`/exercise/edit/${exerciseObj.id}`} passHref>
           <Button style={{ background: '#008000', border: 'solid 1px black' }} variant="info">EDIT</Button>
