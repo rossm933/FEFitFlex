@@ -17,8 +17,7 @@ function ExerciseCard({ exerciseObj, onUpdate }) {
       deleteExercise(exerciseObj.id).then(() => onUpdate());
     }
   };
-  console.warn(exerciseObj);
-  console.warn(user);
+
   const isOwner = exerciseObj.userId === user.id;
 
   return (
