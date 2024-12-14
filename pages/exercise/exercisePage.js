@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap';
 import { getAllExercises } from '../../api/exerciseData';
 import ExerciseCard from '../../components/cards/ExerciseCard';
 
-export default function VenuesPage() {
+export default function ExercisePage() {
   // *set state for venues
   const [exercises, setExercises] = useState([]);
 
@@ -23,7 +23,7 @@ export default function VenuesPage() {
 
   return (
     <div className="text-center my-4">
-      <Link href="/venues/edit/new" passHref>
+      <Link href="/exercise/new" passHref>
         <Button>Create Exercise</Button>
       </Link>
       <div className="d-flex flex-wrap">{exercises.map((exercise) => <ExerciseCard key={exercise.id} exerciseObj={exercise} onUpdate={getAllTheExercises} />)}</div>

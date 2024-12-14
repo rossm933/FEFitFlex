@@ -44,7 +44,7 @@ function WorkoutForm({ workout }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{workout.id ? 'Update' : 'Create'} Book</h2>
+      <h2 className="text-white mt-5">{workout.id ? 'Update' : 'Create'} Workout</h2>
 
       {/* TITLE INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Workout Name" className="mb-3">
