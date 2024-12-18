@@ -12,6 +12,17 @@ const getAllTags = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleTag = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/tag/${id}`, {
+    method: 'GET',
+    headers: {
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 const createTag = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/tag`, {
     method: 'POST',
@@ -27,14 +38,14 @@ const createTag = (payload) => new Promise((resolve, reject) => {
 });
 
 const updateTag = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/${payload.id}`, {
+  fetch(`${endpoint}/tag/${payload.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(payload),
   })
-    .then((response) => response.json())
+    .then((response) => response.text())
     .then((data) => resolve(data))
     .catch(reject);
 });
@@ -51,5 +62,5 @@ const deleteTag = (id) => new Promise((resolve, reject) => {
 });
 
 export {
-  getAllTags, createTag, updateTag, deleteTag,
+  getAllTags, getSingleTag, createTag, updateTag, deleteTag,
 };

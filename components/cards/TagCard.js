@@ -1,12 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card } from 'react-bootstrap';
+// eslint-disable-next-line import/no-duplicates
+import Button from 'react-bootstrap/card';
+// eslint-disable-next-line import/no-duplicates
+import Card from 'react-bootstrap/card';
 import { useRouter } from 'next/router';
+import { deleteTag } from '../../api/tagData';
 import { useAuth } from '../../utils/context/authContext';
 
-export default function TagCard({ tagObj, handleDelete }) {
-  const router = useRouter();
+function TagCard({ tagObj, onUpdate }) {
   const { user } = useAuth();
+  const router = useRouter();
+
+  const deleteThisTag = () => {
+    if (window.confirm(`Delete ${tagObj.name}?`)) {
+      deleteTag(tagObj.id).then(() => onUpdate());
+    }
+  };
 
   const isOwner = tagObj.userId === user.id;
 
@@ -24,12 +34,12 @@ export default function TagCard({ tagObj, handleDelete }) {
           style={{
             margin: '5px 3px 5px 3px',
           }}
-          onClick={() => router.push(`/tags/${tagObj.id}`)}
+          onClick={() => router.push(`/tag/edit/${tagObj.id}`)}
         > Edit
         </Button>
         )}
         {isOwner && (
-        <Button style={{ margin: '5px 3px 5px 3px' }} onClick={() => handleDelete(tagObj)}>Delete </Button>
+        <Button style={{ margin: '5px 3px 5px 3px' }} onClick={deleteThisTag}>Delete </Button>
         )}
       </Card.Body>
     </Card>
@@ -39,8 +49,10 @@ export default function TagCard({ tagObj, handleDelete }) {
 TagCard.propTypes = {
   tagObj: PropTypes.shape({
     name: PropTypes.string,
-    userId: PropTypes.number,
     id: PropTypes.number,
+    userId: PropTypes.number,
   }).isRequired,
-  handleDelete: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
+
+export default TagCard;
