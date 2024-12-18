@@ -15,16 +15,15 @@ export default function TagForm({ tagObj }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    if (tagObj) setFormInput(tagObj);
+    if (tagObj.id) setFormInput(tagObj);
   }, [tagObj]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const payload = { ...formInput, userId: user.id };
     if (tagObj.id) {
-      updateTag(formInput);
-      router.push('/tag/tagPage');
+      updateTag(payload).then(() => router.push('/tag/tagPage'));
     } else {
-      const payload = { ...formInput, userId: user.id };
       createTag(payload);
       router.push('/tag/tagPage');
     }
@@ -37,9 +36,10 @@ export default function TagForm({ tagObj }) {
       [name]: value,
     }));
   };
-
+  console.warn(tagObj);
   return (
     <Form onSubmit={handleSubmit}>
+      <h2 className="text-white mt-5">{tagObj.id ? 'Update' : 'Create'} Tag</h2>
       <Form.Group as={Col} md="6" controlId="validationName">
         <Form.Label>Tag Name</Form.Label>
         <Form.Control
@@ -55,7 +55,7 @@ export default function TagForm({ tagObj }) {
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Button type="submit">Submit</Button>
+      <Button type="submit">{tagObj.id ? 'Update' : 'Create'} Tag</Button>
     </Form>
   );
 }
