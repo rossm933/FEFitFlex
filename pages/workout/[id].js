@@ -13,7 +13,7 @@ export default function ViewWorkout() {
   };
 
   useEffect(() => {
-    if (id) getWorkoutDetails();
+    getWorkoutDetails();
   }, [id]);
   console.warn(workoutDetails);
   return (
@@ -23,14 +23,17 @@ export default function ViewWorkout() {
         <div style={{ color: 'black', flex: 1 }}>
           <h1 style={{ fontSize: '2rem', marginBottom: '10px' }}>{workoutDetails?.workoutName}</h1>
           <div style={{ color: 'black', marginBottom: '10px' }}>
-            {workoutDetails.exercise?.length > 0 ? (
-              workoutDetails.exercise.map((exercise) => (
+            {workoutDetails.exerciseWorkout?.length > 0 ? (
+              workoutDetails.exerciseWorkout.map((exerciseWorkout) => (
                 <ExerciseWorkoutCard
-                  key={exercise.id}
-                  exerciseObj={exercise}
+                  key={exerciseWorkout.id}
+                  exerciseObj={{
+                    ...exerciseWorkout.exercise, // Spread properties from exercise
+                    id: exerciseWorkout.id, // Pass exerciseWorkout's id
+                  }}
                   onRemove={() => {
-                    console.log(`Remove exercise with ID: ${id}`);
-                  // Implement remove functionality if needed
+                    console.log(`Remove exercise with ID: ${exerciseWorkout.id}`);
+                    // Implement remove functionality if needed
                   }}
                 />
               ))

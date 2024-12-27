@@ -71,6 +71,12 @@ ExerciseWorkoutCard.propTypes = {
     sets: PropTypes.number,
     repetitions: PropTypes.number,
     weight: PropTypes.number,
+    exerciseWorkout: PropTypes.arrayOf(PropTypes.shape({
+      exercise: PropTypes.shape({
+        exerciseName: PropTypes.string,
+        id: PropTypes.number,
+      }),
+    })),
     exerciseTag: PropTypes.arrayOf(
       PropTypes.shape({
         tag: PropTypes.shape({
