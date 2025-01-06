@@ -25,7 +25,7 @@ function Home() {
   return (
     <div className="text-center my-4">
       <Link href="/workout/new" passHref>
-        <Button style={{ background: '#B38B6D', border: 'solid 1px black' }}>Add A Workout</Button>
+        <Button style={{ background: 'goldenrod', border: 'solid 1px black' }}>Add A Workout</Button>
       </Link>
       <div className="d-flex flex-wrap justify-content-center align-items-center">
         {workouts.map((workout) => (

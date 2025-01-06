@@ -55,7 +55,7 @@ export default function TagForm({ tagObj }) {
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Button type="submit">{tagObj.id ? 'Update' : 'Create'} Tag</Button>
+      <Button style={{ background: 'goldenrod', border: 'solid 1px black' }} type="submit">{tagObj.id ? 'Update' : 'Create'} Tag</Button>
     </Form>
   );
 }

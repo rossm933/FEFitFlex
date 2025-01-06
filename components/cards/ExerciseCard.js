@@ -21,8 +21,17 @@ function ExerciseCard({ exerciseObj, onUpdate }) {
   const isOwner = exerciseObj.userId === user.id;
 
   return (
-    <Card id="card" style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={exerciseObj.imageUrl} alt={exerciseObj.exerciseName} style={{ height: '400px' }} />
+    <Card
+      id="card"
+      style={{
+        width: '18rem',
+        boxShadow: '10px 10px 20px rgba(255, 255, 153, 0.8)', // Shadow to the right and bottom
+        backgroundColor: '#D9DDDC',
+        margin: '10px',
+        border: 'solid 5px black',
+      }}
+    >
+      <Card.Img variant="top" src={exerciseObj.imageUrl} alt={exerciseObj.exerciseName} style={{ height: '250px' }} />
       <Card.Body>
         <Card.Title>
           {exerciseObj.exerciseName}
@@ -40,16 +49,16 @@ function ExerciseCard({ exerciseObj, onUpdate }) {
         </p>
         <br />
         <Link href={`/exercise/${exerciseObj.id}`} passHref>
-          <Button style={{ background: '#ADD8E6', border: 'solid 1px black' }} variant="primary" className="m-2">VIEW</Button>
+          <Button style={{ background: '#926C15', border: 'solid 1px black' }} variant="primary" className="m-2">VIEW</Button>
         </Link>
 
         {isOwner && (
         <Link href={`/exercise/edit/${exerciseObj.id}`} passHref>
-          <Button style={{ background: '#008000', border: 'solid 1px black' }} variant="info">EDIT</Button>
+          <Button style={{ background: '#B2AC88', border: 'solid 1px black' }} variant="info">EDIT</Button>
         </Link>
         )}
         {isOwner && (
-        <Button variant="danger" style={{ background: '#8b0000', border: 'solid 1px black' }} onClick={deleteThisExercise} className="m-2">
+        <Button variant="danger" style={{ background: '#D2042D', border: 'solid 1px black' }} onClick={deleteThisExercise} className="m-2">
           DELETE
         </Button>
         )}

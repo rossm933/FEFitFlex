@@ -24,7 +24,7 @@ export default function ExercisePage() {
   return (
     <div className="text-center my-4">
       <Link href="/exercise/new" passHref>
-        <Button>Create Exercise</Button>
+        <Button style={{ background: 'goldenrod', border: 'solid 1px black' }}>Create Exercise</Button>
       </Link>
       <div className="d-flex flex-wrap">{exercises.map((exercise) => <ExerciseCard key={exercise.id} exerciseObj={exercise} onUpdate={getAllTheExercises} />)}</div>
     </div>

@@ -22,6 +22,7 @@ export default function ViewWorkout() {
         {/* Title and content */}
         <div style={{ color: 'black', flex: 1 }}>
           <h1 style={{ fontSize: '2rem', marginBottom: '10px' }}>{workoutDetails?.workoutName}</h1>
+          <h6>{workoutDetails.description}</h6>
           <div style={{ color: 'black', marginBottom: '10px' }}>
             {workoutDetails.exerciseWorkout?.length > 0 ? (
               workoutDetails.exerciseWorkout.map((exerciseWorkout) => (

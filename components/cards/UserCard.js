@@ -6,8 +6,10 @@ export default function UserCard({ userObj }) {
   return (
     <Card style={{
       width: '18rem',
-      boxShadow: '10px 10px 20px rgba(213, 32, 168, 0.8)', // Shadow to the right and bottom
-      backgroundColor: '#00adef',
+      boxShadow: '10px 10px 20px rgba(255, 255, 153, 0.8)', // Shadow to the right and bottom
+      backgroundColor: '#D9DDDC',
+      margin: '10px',
+      border: 'solid 5px black',
     }}
     >
       <Card.Body>

@@ -15,11 +15,19 @@ function WorkoutCard({ workout, onUpdate }) {
   };
 
   return (
-    <Card id="card" style={{ width: '18rem', margin: '10px' }}>
+    <Card
+      id="card"
+      style={{
+        width: '18rem',
+        boxShadow: '10px 10px 20px rgba(255, 255, 153, 0.8)', // Shadow to the right and bottom
+        backgroundColor: '#D9DDDC',
+        margin: '10px',
+        border: 'solid 5px black',
+      }}
+    >
       <Card.Body>
         <Card.Title>
           {workout.workoutName}
-          <br /> {workout.description}{workout.id}
           <br />
         </Card.Title>
         <p className="card-text bold">
@@ -28,13 +36,13 @@ function WorkoutCard({ workout, onUpdate }) {
         </p>
         {/* *DYNAMIC LINK TO workout DETAILS  */}
         <Link href={`/workout/${workout.id}`} passHref>
-          <Button style={{ background: '#ADD8E6', border: 'solid 1px black' }} variant="primary" className="m-2">VIEW</Button>
+          <Button style={{ background: '#926C15', border: 'solid 1px black' }} variant="primary" className="m-2">VIEW</Button>
         </Link>
 
         <Link href={`/workout/edit/${workout.id}`} passHref>
-          <Button style={{ background: '#008000', border: 'solid 1px black' }} variant="info">EDIT</Button>
+          <Button style={{ background: '#B2AC88', border: 'solid 1px black' }} variant="info">EDIT</Button>
         </Link>
-        <Button variant="danger" style={{ background: '#8b0000', border: 'solid 1px black' }} onClick={deleteThisWorkout} className="m-2">
+        <Button variant="danger" style={{ background: '#D2042D', border: 'solid 1px black' }} onClick={deleteThisWorkout} className="m-2">
           DELETE
         </Button>
       </Card.Body>
