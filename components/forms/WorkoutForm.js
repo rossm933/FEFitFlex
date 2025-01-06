@@ -118,7 +118,7 @@ function WorkoutForm({ workout }) {
             </div>
 
             {/* SUBMIT BUTTON */}
-            <Button type="submit" className="form-button">
+            <Button style={{ background: 'goldenrod', border: 'solid 1px black' }} type="submit" className="form-button">
               {workout.id ? 'Update' : 'Create'} Workout
             </Button>
           </Form>

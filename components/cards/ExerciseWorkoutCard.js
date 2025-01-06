@@ -13,7 +13,11 @@ function ExerciseWorkoutCard({ exerciseObj, onRemove }) {
 
   return (
     <Card style={{
-      width: '18rem', margin: '10px auto', border: '1px solid #ddd', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+      width: '18rem',
+      margin: '10px auto',
+      boxShadow: '10px 10px 20px rgba(255, 255, 153, 0.8)', // Shadow to the right and bottom
+      backgroundColor: '#D9DDDC',
+      border: 'solid 5px black',
     }}
     >
       <Card.Img
@@ -52,9 +56,9 @@ function ExerciseWorkoutCard({ exerciseObj, onRemove }) {
         )}
         <div className="d-flex justify-content-between">
           <Link href={`/exercise/editforworkout/${exerciseObj.id}`} passHref>
-            <Button variant="info" size="sm">Edit</Button>
+            <Button style={{ background: '#B2AC88', border: 'solid 1px black' }} variant="info" size="sm">Edit</Button>
           </Link>
-          <Button variant="danger" size="sm" onClick={RemoveThisExercise}>
+          <Button style={{ background: '#D2042D', border: 'solid 1px black' }} variant="danger" size="sm" onClick={RemoveThisExercise}>
             Delete
           </Button>
         </div>

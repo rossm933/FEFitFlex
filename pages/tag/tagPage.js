@@ -27,8 +27,8 @@ export default function Tags() {
   }, []);
 
   return (
-    <>
-      <Button style={{ margin: '5px 0px 5px 0px' }} onClick={() => router.push('/tag/new')}>
+    <div className="text-center my-4">
+      <Button style={{ background: 'goldenrod', border: 'solid 1px black' }} onClick={() => router.push('/tag/new')}>
         Create Tag
       </Button>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
@@ -40,6 +40,6 @@ export default function Tags() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }

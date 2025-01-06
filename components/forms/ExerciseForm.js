@@ -178,7 +178,7 @@ export default function ExerciseForm({ obj }) {
             </div>
 
             {/* SUBMIT BUTTON */}
-            <Button type="submit" className="form-button">
+            <Button style={{ background: 'goldenrod', border: 'solid 1px black' }} type="submit" className="form-button">
               {obj.id ? 'Update' : 'Create'} Exercise
             </Button>
           </Form>

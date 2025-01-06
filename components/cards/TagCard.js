@@ -23,23 +23,23 @@ function TagCard({ tagObj, onUpdate }) {
   return (
     <Card style={{
       width: '18rem',
-      boxShadow: '10px 10px 20px rgba(213, 32, 168, 0.8)', // Shadow to the right and bottom
-      backgroundColor: '#00adef',
+      boxShadow: '10px 10px 20px rgba(255, 255, 153, 0.8)', // Shadow to the right and bottom
+      backgroundColor: '#D9DDDC',
+      margin: '10px',
+      border: 'solid 5px black',
     }}
     >
       <Card.Body>
         <Card.Title>{tagObj.name}</Card.Title>
         {isOwner && (
         <Button
-          style={{
-            margin: '5px 3px 5px 3px',
-          }}
+          style={{ background: '#B2AC88', border: 'solid 1px black' }}
           onClick={() => router.push(`/tag/edit/${tagObj.id}`)}
         > Edit
         </Button>
         )}
         {isOwner && (
-        <Button style={{ margin: '5px 3px 5px 3px' }} onClick={deleteThisTag}>Delete </Button>
+        <Button style={{ background: '#D2042D', border: 'solid 1px black' }} onClick={deleteThisTag}>Delete </Button>
         )}
       </Card.Body>
     </Card>
